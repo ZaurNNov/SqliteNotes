@@ -7,6 +7,7 @@
 //
 
 #import "ShowNoteViewController.h"
+#import "DBManager.h"
 
 @interface ShowNoteViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
@@ -20,12 +21,32 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.noteNameTextField.delegate = self;
+    self.noteBofyTextView.delegate = self;
 }
 
 
 - (IBAction)saveBarButtonAction:(UIBarButtonItem *)sender {
     
+    
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+-(BOOL)textViewShouldEndEditing:(UITextView *)textView
+{
+    [textView resignFirstResponder];
+    return YES;
+}
+
+-(void)updateData {
+    // signal for delegate
+    NSLog(@"%@: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 }
 
 @end
