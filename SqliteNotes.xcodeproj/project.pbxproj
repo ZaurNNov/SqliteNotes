@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		CE96D0C620BED3160089CDEB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE96D0C520BED3160089CDEB /* AppDelegate.m */; };
-		CE96D0C920BED3160089CDEB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE96D0C820BED3160089CDEB /* ViewController.m */; };
 		CE96D0CC20BED3160089CDEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE96D0CA20BED3160089CDEB /* Main.storyboard */; };
 		CE96D0CE20BED3170089CDEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE96D0CD20BED3170089CDEB /* Assets.xcassets */; };
 		CE96D0D120BED3170089CDEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE96D0CF20BED3170089CDEB /* LaunchScreen.storyboard */; };
@@ -16,14 +15,14 @@
 		CE96D0DC20BED3290089CDEB /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CE96D0DB20BED3290089CDEB /* libsqlite3.tbd */; };
 		CE96D0DE20BED3470089CDEB /* noteDB.sql in Resources */ = {isa = PBXBuildFile; fileRef = CE96D0DD20BED3470089CDEB /* noteDB.sql */; };
 		CE96D0E120BED3980089CDEB /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE96D0E020BED3980089CDEB /* DBManager.m */; };
+		CE96D0E420BEE1790089CDEB /* AllNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE96D0E320BEE1790089CDEB /* AllNotesViewController.m */; };
+		CE96D0E720BEE20B0089CDEB /* ShowNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE96D0E620BEE20B0089CDEB /* ShowNoteViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CE96D0C120BED3160089CDEB /* SqliteNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SqliteNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE96D0C420BED3160089CDEB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CE96D0C520BED3160089CDEB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CE96D0C720BED3160089CDEB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		CE96D0C820BED3160089CDEB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		CE96D0CB20BED3160089CDEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE96D0CD20BED3170089CDEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE96D0D020BED3170089CDEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -33,6 +32,10 @@
 		CE96D0DD20BED3470089CDEB /* noteDB.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = noteDB.sql; sourceTree = "<group>"; };
 		CE96D0DF20BED3980089CDEB /* DBManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
 		CE96D0E020BED3980089CDEB /* DBManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
+		CE96D0E220BEE1790089CDEB /* AllNotesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllNotesViewController.h; sourceTree = "<group>"; };
+		CE96D0E320BEE1790089CDEB /* AllNotesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllNotesViewController.m; sourceTree = "<group>"; };
+		CE96D0E520BEE20B0089CDEB /* ShowNoteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShowNoteViewController.h; sourceTree = "<group>"; };
+		CE96D0E620BEE20B0089CDEB /* ShowNoteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowNoteViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,18 +70,20 @@
 		CE96D0C320BED3160089CDEB /* SqliteNotes */ = {
 			isa = PBXGroup;
 			children = (
-				CE96D0C420BED3160089CDEB /* AppDelegate.h */,
-				CE96D0C520BED3160089CDEB /* AppDelegate.m */,
-				CE96D0C720BED3160089CDEB /* ViewController.h */,
-				CE96D0C820BED3160089CDEB /* ViewController.m */,
 				CE96D0CA20BED3160089CDEB /* Main.storyboard */,
-				CE96D0CD20BED3170089CDEB /* Assets.xcassets */,
 				CE96D0CF20BED3170089CDEB /* LaunchScreen.storyboard */,
+				CE96D0CD20BED3170089CDEB /* Assets.xcassets */,
+				CE96D0DD20BED3470089CDEB /* noteDB.sql */,
 				CE96D0D220BED3170089CDEB /* Info.plist */,
 				CE96D0D320BED3170089CDEB /* main.m */,
-				CE96D0DD20BED3470089CDEB /* noteDB.sql */,
+				CE96D0C420BED3160089CDEB /* AppDelegate.h */,
+				CE96D0C520BED3160089CDEB /* AppDelegate.m */,
 				CE96D0DF20BED3980089CDEB /* DBManager.h */,
 				CE96D0E020BED3980089CDEB /* DBManager.m */,
+				CE96D0E220BEE1790089CDEB /* AllNotesViewController.h */,
+				CE96D0E320BEE1790089CDEB /* AllNotesViewController.m */,
+				CE96D0E520BEE20B0089CDEB /* ShowNoteViewController.h */,
+				CE96D0E620BEE20B0089CDEB /* ShowNoteViewController.m */,
 			);
 			path = SqliteNotes;
 			sourceTree = "<group>";
@@ -162,8 +167,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE96D0C920BED3160089CDEB /* ViewController.m in Sources */,
+				CE96D0E420BEE1790089CDEB /* AllNotesViewController.m in Sources */,
 				CE96D0D420BED3170089CDEB /* main.m in Sources */,
+				CE96D0E720BEE20B0089CDEB /* ShowNoteViewController.m in Sources */,
 				CE96D0C620BED3160089CDEB /* AppDelegate.m in Sources */,
 				CE96D0E120BED3980089CDEB /* DBManager.m in Sources */,
 			);
