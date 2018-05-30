@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  AllNotesViewController.h
 //  SqliteNotes
 //
 //  Created by Zaur Giyasov on 30/05/2018.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface AllNotesViewController : UIViewController
 
 @end
-

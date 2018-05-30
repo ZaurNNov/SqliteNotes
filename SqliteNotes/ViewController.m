@@ -1,28 +1,23 @@
 //
-//  ViewController.m
+//  AllNotesViewController.m
 //  SqliteNotes
 //
 //  Created by Zaur Giyasov on 30/05/2018.
 //  Copyright © 2018 Zaur Giyasov. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "AllNotesViewController.h"
 
-@interface ViewController ()
+@interface AllNotesViewController ()
 
 @end
 
-@implementation ViewController
+@implementation AllNotesViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-}
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
+    
 }
 
 

@@ -18,5 +18,4 @@
 @property (nonatomic) int affectedRow;
 @property (nonatomic) long long lastInsertedRowID;
 
-
 @end
