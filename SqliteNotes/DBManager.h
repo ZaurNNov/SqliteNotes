@@ -10,12 +10,19 @@
 
 @interface DBManager : NSObject
 
--(instancetype)initWithDBFilename:(NSString *)dbName;
+//-(instancetype)initWithDBFilename:(NSString *)dbName;
 -(NSArray *)loadDB:(NSString *)query;
 -(void)executeQuery:(NSString *)query;
 
 @property (nonatomic, strong) NSMutableArray *arrColumnNames;
 @property (nonatomic) int affectedRow;
 @property (nonatomic) long long lastInsertedRowID;
+
++(instancetype) sharedInstance;
+
++(instancetype) alloc __attribute__((unavailable("alloc not available, call sharedInstance instead")));
+-(instancetype) init __attribute__((unavailable("init not available, call sharedInstance instead")));
++(instancetype) new __attribute__((unavailable("new not available, call sharedInstance instead")));
+-(instancetype) copy __attribute__((unavailable("copy not available, call sharedInstance instead")));
 
 @end

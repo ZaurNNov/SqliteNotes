@@ -15,29 +15,37 @@
 @property (nonatomic, strong) NSString *dbFilename;
 @property (nonatomic, strong) NSMutableArray *resultMutableArray;
 
--(void)copyDBIntoAppFolder;
--(void)runQuery:(const char *)query isQueryExecutable:(BOOL)queryExecutable;
+//-(void)copyDBIntoAppFolder;
+//-(void)runQuery:(const char *)query isQueryExecutable:(BOOL)queryExecutable;
 
 @end
 
 @implementation DBManager
 
--(instancetype)initWithDBFilename:(NSString *)dbName
-{
+//Create Singleton
++(instancetype) sharedInstance {
+    static dispatch_once_t onceToken = 0;
+    __strong static id _sharedObject = nil;
+
+    dispatch_once(&onceToken, ^{
+        _sharedObject = [[super alloc] initUniqueInstance];
+    });
+    return _sharedObject;
+}
+
+//In it method
+-(instancetype) initUniqueInstance {
     self = [super init];
-    
-    if (!self) {
-        NSLog(@"%@: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-        return nil;
-    }
-    
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    self.dd = [paths objectAtIndex:0];
-    
-    self.dbFilename = dbName;
-    [self copyDBIntoAppFolder];
-    NSLog(@"DocumentsDirectory: %@", self.dd);
-    
+    if(self)
+        {
+        //Do your custom initialization
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        self.dd = [paths objectAtIndex:0];
+        
+        self.dbFilename = @"noteDB.sql";
+        [self copyDBIntoAppFolder];
+        NSLog(@"DocumentsDirectory: %@", self.dd);
+        }
     return self;
 }
 
@@ -87,10 +95,11 @@
             // Check if the query is non-executable.
             if (!queryExecutable) {
                 // In this case data must be loaded from the database.
-                NSMutableArray *arrDataRow = [[NSMutableArray alloc] init];
+                NSMutableArray *arrDataRow;
                 
                 // Loop through the results and add them to the results array row by row.
                 while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
+                    arrDataRow = [[NSMutableArray alloc] init];
                     // Get the total number of columns.
                     int totalColumns = sqlite3_column_count(compiledStatement);
 
