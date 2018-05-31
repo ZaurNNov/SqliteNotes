@@ -9,6 +9,7 @@
 #import "AllNotesViewController.h"
 #import "DBManager.h"
 #import "ShowNoteViewController.h"
+#import "NoteData.h"
 
 @interface AllNotesViewController () <ShowNoteViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableViewNotes;
@@ -16,9 +17,10 @@
 
 @property (nonatomic, strong) DBManager *dbManager;
 @property (nonatomic, strong) NSArray *arrayFromDB;
-@property (retain, nonatomic) NSDate *createdDate;
-@property (retain, nonatomic) NSDate *currentDate;
+@property (strong, nonatomic) NSDate *createdDate;
+@property (strong, nonatomic) NSDate *currentDate;
 @property (nonatomic) int recordNoteID;
+@property (nonatomic, strong) NoteData *notedata;
 
 -(void)loadData;
 
@@ -38,8 +40,9 @@
     self.tableViewNotes.delegate = self;
     self.tableViewNotes.dataSource = self;
     
-    // dbase init
-    self.dbManager = [[DBManager alloc] initWithDBFilename:@"noteDB.sql"];
+    // dbase & note class init
+    self.dbManager = [DBManager sharedInstance];
+    self.notedata = [[NoteData alloc] init];
     
     // load the data
     [self updateData];

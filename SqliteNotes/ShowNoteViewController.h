@@ -17,7 +17,7 @@
 @interface ShowNoteViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate, ShowNoteViewControllerDelegate>
 
 @property (nonatomic, strong) id<ShowNoteViewControllerDelegate> selfDelegate;
-@property (retain, nonatomic) NSDate *createdDate;
+@property (nonatomic, strong) NSDate *createdDate;
 @property (nonatomic) int recordNoteID;
 
 @end

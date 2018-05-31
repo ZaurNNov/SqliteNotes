@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *noteBofyTextView;
 - (IBAction)saveBarButtonAction:(UIBarButtonItem *)sender;
 
-@property (retain, nonatomic) NSDate *currentDate;
+@property (nonatomic, strong) NSDate *currentDate;
 @property (nonatomic, strong) DBManager *dbManager;
 
 -(void)loadNote;
@@ -79,7 +79,7 @@
     }
     
     // Init DBase
-    self.dbManager = [[DBManager alloc] initWithDBFilename:@"noteDB.sql"];
+    self.dbManager = [DBManager sharedInstance];
     
     // Check new note or editing.
     if (self.recordNoteID != -1) {
