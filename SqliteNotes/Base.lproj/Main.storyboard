@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1Fm-ib-IE5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1Fm-ib-IE5">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -67,7 +67,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableViewNotes" destination="HCs-Kr-Vde" id="VvU-k2-1fV"/>
-                        <segue destination="IPq-aY-xmc" kind="show" identifier="showNote" id="zCr-cH-vJW"/>
+                        <segue destination="IPq-aY-xmc" kind="show" identifier="detailNote" id="zCr-cH-vJW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -82,14 +82,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date: 2018-05-29 18:38" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q7F-JF-arp">
-                                <rect key="frame" x="16" y="72" width="288" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="YYYY-MM-dd HH:MM:ss" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q7F-JF-arp">
+                                <rect key="frame" x="155" y="72" width="149" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YYYY-MM-dd HH:MM:ss" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.30000001192092896" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2z0-GP-o7O">
+                                <rect key="frame" x="105.5" y="101" width="198.5" height="21"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter note name..." textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="8" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Clj-6K-unv">
-                                <rect key="frame" x="16" y="103" width="288" height="30"/>
+                                <rect key="frame" x="16" y="130" width="288" height="30"/>
                                 <color key="backgroundColor" red="0.83921568627450982" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="oUc-OT-y1a"/>
@@ -98,28 +104,46 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="alphabet" enablesReturnKeyAutomatically="YES"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4yP-jj-oXD">
-                                <rect key="frame" x="16" y="141" width="288" height="407"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Note body example...." adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4yP-jj-oXD">
+                                <rect key="frame" x="16" y="168" width="288" height="380"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                 <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="alphabet" enablesReturnKeyAutomatically="YES"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Created date: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Uc-23-aT4">
+                                <rect key="frame" x="16" y="72" width="113.5" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last edit: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2z-zb-mF2">
+                                <rect key="frame" x="16" y="101" width="78.5" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.86274509803921573" green="0.90148185355277777" blue="0.942138671875" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="4yP-jj-oXD" firstAttribute="top" secondItem="Clj-6K-unv" secondAttribute="bottom" constant="8" id="2nN-Vz-eh2"/>
+                            <constraint firstItem="9Uc-23-aT4" firstAttribute="leading" secondItem="xFk-wx-5ov" secondAttribute="leading" constant="16" id="2s1-XQ-4so"/>
                             <constraint firstItem="xFk-wx-5ov" firstAttribute="trailing" secondItem="4yP-jj-oXD" secondAttribute="trailing" constant="16" id="3Ne-gf-1wI"/>
+                            <constraint firstItem="9Uc-23-aT4" firstAttribute="top" secondItem="xFk-wx-5ov" secondAttribute="top" constant="8" id="3uW-kf-e4I"/>
+                            <constraint firstItem="Q7F-JF-arp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9Uc-23-aT4" secondAttribute="trailing" constant="8" id="6Wy-as-fwB"/>
+                            <constraint firstItem="N2z-zb-mF2" firstAttribute="top" secondItem="9Uc-23-aT4" secondAttribute="bottom" constant="8" id="6t4-nw-gwX"/>
+                            <constraint firstItem="2z0-GP-o7O" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="N2z-zb-mF2" secondAttribute="trailing" constant="8" id="M6S-Me-WbT"/>
                             <constraint firstItem="4yP-jj-oXD" firstAttribute="leading" secondItem="xFk-wx-5ov" secondAttribute="leading" constant="16" id="MWA-nD-iO1"/>
                             <constraint firstItem="xFk-wx-5ov" firstAttribute="bottom" secondItem="4yP-jj-oXD" secondAttribute="bottom" constant="20" id="PpA-UG-OHe"/>
-                            <constraint firstItem="Q7F-JF-arp" firstAttribute="leading" secondItem="xFk-wx-5ov" secondAttribute="leading" constant="16" id="WVD-uy-XJh"/>
+                            <constraint firstItem="N2z-zb-mF2" firstAttribute="leading" secondItem="xFk-wx-5ov" secondAttribute="leading" constant="16" id="Vc9-LI-jFR"/>
                             <constraint firstItem="Q7F-JF-arp" firstAttribute="trailing" secondItem="xFk-wx-5ov" secondAttribute="trailing" constant="-16" id="Y6V-Vc-6bj"/>
+                            <constraint firstItem="2z0-GP-o7O" firstAttribute="top" secondItem="Q7F-JF-arp" secondAttribute="bottom" constant="8" id="dOE-xh-KC4"/>
+                            <constraint firstItem="Clj-6K-unv" firstAttribute="top" secondItem="2z0-GP-o7O" secondAttribute="bottom" constant="8" id="fHU-ha-Hzm"/>
                             <constraint firstItem="Clj-6K-unv" firstAttribute="leading" secondItem="xFk-wx-5ov" secondAttribute="leading" constant="16" id="hya-AR-kKD"/>
                             <constraint firstItem="Q7F-JF-arp" firstAttribute="top" secondItem="xFk-wx-5ov" secondAttribute="top" constant="8" id="pgS-9o-NAi"/>
-                            <constraint firstItem="Clj-6K-unv" firstAttribute="top" secondItem="Q7F-JF-arp" secondAttribute="bottom" constant="10" id="rTi-lG-PFn"/>
                             <constraint firstItem="xFk-wx-5ov" firstAttribute="trailing" secondItem="Clj-6K-unv" secondAttribute="trailing" constant="16" id="tJT-2E-l6n"/>
+                            <constraint firstItem="xFk-wx-5ov" firstAttribute="trailing" secondItem="2z0-GP-o7O" secondAttribute="trailing" constant="16" id="yZF-ay-dSd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xFk-wx-5ov"/>
                     </view>
@@ -132,13 +156,14 @@
                     </navigationItem>
                     <connections>
                         <outlet property="dateLabel" destination="Q7F-JF-arp" id="t11-rl-eZX"/>
+                        <outlet property="lastEditdateLabel" destination="2z0-GP-o7O" id="gA3-sk-dAs"/>
                         <outlet property="noteBofyTextView" destination="4yP-jj-oXD" id="CUn-nR-OCF"/>
                         <outlet property="noteNameTextField" destination="Clj-6K-unv" id="vFi-H1-PHH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YIT-QZ-U8w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1907" y="100"/>
+            <point key="canvasLocation" x="1906.875" y="99.295774647887328"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="n0A-na-H6L">
