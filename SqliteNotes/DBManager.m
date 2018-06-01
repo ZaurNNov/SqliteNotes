@@ -125,19 +125,27 @@
     [self runQuery:[query UTF8String] isQueryExecutable:YES];
 }
 
--(void)saveNoteWithID:(uint)noteID note:(NoteData *)note {
-    // for update
-    int intID = noteID;
-    NSString *query = [NSString stringWithFormat:@"update notes set notename='%@', notebody='%@', notecreated=%f, noteedit=%f where noteID=%d", note.noteName, note.noteBody, [note.createdDate timeIntervalSinceReferenceDate], [note.editedDate timeIntervalSinceReferenceDate], intID];
+//-(void)saveNoteWithID:(uint)noteID note:(NoteData *)note {
+//    // for update
+//    int intID = noteID;
+//    NSString *query = [NSString stringWithFormat:@"update notes set notename='%@', notebody='%@', notecreated=%f, noteedit=%f where noteID=%d", note.noteName, note.noteBody, [note.createdDate timeIntervalSinceReferenceDate], [note.editedDate timeIntervalSinceReferenceDate], intID];
+//
+//    // Execute the query.
+//    [self executeQuery:query];
+//}
+
+-(void)saveNewNote:(NoteData *)note {
+    // for create new
+    
+    NSString *query = [NSString stringWithFormat:@"insert into notes values(null, '%@', '%@', %f, %f)", note.noteName, note.noteBody, [note.createdDate timeIntervalSinceReferenceDate], [note.editedDate timeIntervalSinceReferenceDate]];
     
     // Execute the query.
     [self executeQuery:query];
 }
 
--(void)saveNote:(NoteData *)note {
-    // for create new
+-(void)saveOldNote:(NoteData *)note {
     
-    NSString *query = [NSString stringWithFormat:@"insert into notes values(null, '%@', '%@', %f, %f)", note.noteName, note.noteBody, [note.createdDate timeIntervalSinceReferenceDate], [note.editedDate timeIntervalSinceReferenceDate]];
+    NSString *query = [NSString stringWithFormat:@"update notes set notename='%@', notebody='%@', notecreated=%f, noteedit=%f where noteID=%d", note.noteName, note.noteBody, [note.createdDate timeIntervalSinceReferenceDate], [note.editedDate timeIntervalSinceReferenceDate], note.noteID];
     
     // Execute the query.
     [self executeQuery:query];

@@ -75,17 +75,14 @@
 
     DBManager *db = [DBManager sharedInstance];
     
-    if (self.recordNoteID == -1) {
+    if (self.recordNoteID < 0) {
         
         self.noteData = [self updateNoteFromFields];
-        [db saveNote:self.noteData];
+        [db saveNewNote:self.noteData];
         
     } else {
         self.noteData = [self updateNoteFromFields];
-        [db saveNote:self.noteData];
-//        [db saveNoteWithID:self.recordNoteID note:self.noteData];
-        NSArray *arr = [NSArray arrayWithArray:[db getAllNotedataArray]];
-        NSLog(@"%@", arr);
+        [db saveOldNote:self.noteData];
     }
     
     // inform delegate controller
@@ -93,22 +90,6 @@
     
     // Pop the view controller.
     [self.navigationController popViewControllerAnimated:YES];
-    
-//    // If the query was successfully executed then pop the view controller.
-//    if (db.affectedRow != 0) {
-//        NSLog(@"Query was executed successfully. Affected rows = %d", db.affectedRow);
-//
-//        // inform delegate controller
-//        [self.selfDelegate updateData];
-//
-//        // Pop the view controller.
-//        [self.navigationController popViewControllerAnimated:YES];
-//    }
-//    else{
-//        NSLog(@"%@: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-//        NSLog(@"Could not execute the query.");
-//    }
-
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
