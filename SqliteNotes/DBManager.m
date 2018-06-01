@@ -72,15 +72,6 @@
     return (NSArray *)self.resultMutableArray;
 }
 
--(NSArray *)getAllNotes {
-    // query string
-    NSString *query = @"select * from notes";
-    
-    // get result
-    NSArray *array = [NSArray arrayWithArray:[self loadDB:query]];
-    return array;
-}
-
 -(NSArray *)getAllNotedataArray {
     
     NSMutableArray *notes = [NSMutableArray new];

@@ -56,9 +56,23 @@
 - (IBAction)addNew:(UIBarButtonItem *)sender {
     // Before performing the segue, set the -1 value
     self.recordNoteID = -1;
-    
+    self.notedata = [self prepareNewNote];
     // Perform the segue.
     [self performSegueWithIdentifier:@"detailNote" sender:self];
+}
+
+-(NoteData *)prepareNewNote {
+    
+    NoteData *note = [[NoteData alloc] init];
+    NSDate *editedDate = [NSDate date];
+    NSDate *createdDate = editedDate;
+    
+    note.noteName = nil;
+    note.noteBody = nil;
+    note.createdDate = createdDate;
+    note.editedDate = editedDate;
+    
+    return note;
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

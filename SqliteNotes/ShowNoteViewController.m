@@ -59,7 +59,6 @@
     
     self.noteNameTextField.delegate = self;
     self.noteBofyTextView.delegate = self;
-    self.noteData = [[NoteData alloc] init];
 
     if (!self.noteData) {
         self.noteData = [[NoteData alloc] init];
@@ -85,7 +84,7 @@
         self.noteData = [self updateNoteFromFields];
         [db saveNote:self.noteData];
 //        [db saveNoteWithID:self.recordNoteID note:self.noteData];
-        NSArray *arr = [NSArray arrayWithArray:[db getAllNotes]];
+        NSArray *arr = [NSArray arrayWithArray:[db getAllNotedataArray]];
         NSLog(@"%@", arr);
     }
     

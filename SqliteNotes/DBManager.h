@@ -17,7 +17,6 @@
 
 -(void)saveNoteWithID:(uint)noteID note:(NoteData *)note;
 -(void)saveNote:(NoteData *)note;
--(NSArray *)getAllNotes;
 -(NSArray *)getAllNotedataArray;
 
 
