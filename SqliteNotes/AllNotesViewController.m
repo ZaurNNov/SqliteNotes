@@ -20,7 +20,6 @@
 @property (nonatomic) int recordNoteID;
 @property (nonatomic, strong) NoteData *notedata;
 @property (nonatomic, strong) NSArray *allNotes;
-@property (nonatomic, strong) NSArray *allNotes2;
 
 -(void)loadData;
 
@@ -124,15 +123,16 @@
     }
 }
 
+- (void)prepareNoteForEditing:(NSIndexPath * _Nonnull)indexPath {
+    self.notedata = [self.allNotes objectAtIndex:indexPath.row];
+}
+
 -(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     // Get the record ID
-    int recordID = [[[self.allNotes objectAtIndex:indexPath.row] objectAtIndex:0] intValue];
-    self.notedata.noteName = [[self.allNotes objectAtIndex:indexPath.row] objectAtIndex:1];
-    self.notedata.noteBody = [[self.allNotes objectAtIndex:indexPath.row] objectAtIndex:2];
-    self.notedata.editedDate = [NSDate date];
-
-    self.recordNoteID = recordID;
+    [self prepareNoteForEditing:indexPath];
     
+    self.recordNoteID = self.notedata.noteID;
+
     // Prepare edit segue
     [self performSegueWithIdentifier:@"detailNote" sender:self];
 }
