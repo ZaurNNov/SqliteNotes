@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE8AB1DE20C169F50064B622 /* NSObject+customCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8AB1DD20C169F50064B622 /* NSObject+customCategory.m */; };
 		CE96D0C620BED3160089CDEB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE96D0C520BED3160089CDEB /* AppDelegate.m */; };
 		CE96D0CC20BED3160089CDEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE96D0CA20BED3160089CDEB /* Main.storyboard */; };
 		CE96D0CE20BED3170089CDEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE96D0CD20BED3170089CDEB /* Assets.xcassets */; };
@@ -21,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE8AB1DC20C169F50064B622 /* NSObject+customCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+customCategory.h"; sourceTree = "<group>"; };
+		CE8AB1DD20C169F50064B622 /* NSObject+customCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+customCategory.m"; sourceTree = "<group>"; };
 		CE96D0C120BED3160089CDEB /* SqliteNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SqliteNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE96D0C420BED3160089CDEB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CE96D0C520BED3160089CDEB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -89,6 +92,8 @@
 				CE96D0E620BEE20B0089CDEB /* ShowNoteViewController.m */,
 				CEF17B4E20C0525E008DBC4C /* NoteData.h */,
 				CEF17B4F20C0525E008DBC4C /* NoteData.m */,
+				CE8AB1DC20C169F50064B622 /* NSObject+customCategory.h */,
+				CE8AB1DD20C169F50064B622 /* NSObject+customCategory.m */,
 			);
 			path = SqliteNotes;
 			sourceTree = "<group>";
@@ -176,6 +181,7 @@
 				CEF17B5020C0525E008DBC4C /* NoteData.m in Sources */,
 				CE96D0D420BED3170089CDEB /* main.m in Sources */,
 				CE96D0E720BEE20B0089CDEB /* ShowNoteViewController.m in Sources */,
+				CE8AB1DE20C169F50064B622 /* NSObject+customCategory.m in Sources */,
 				CE96D0C620BED3160089CDEB /* AppDelegate.m in Sources */,
 				CE96D0E120BED3980089CDEB /* DBManager.m in Sources */,
 			);

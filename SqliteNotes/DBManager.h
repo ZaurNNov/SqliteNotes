@@ -15,13 +15,15 @@
 -(NSArray *)loadDB:(NSString *)query;
 -(void)executeQuery:(NSString *)query;
 
+-(void)saveNoteWithID:(uint)noteID note:(NoteData *)note;
+-(void)saveNote:(NoteData *)note;
+-(NSArray *)getAllNotes;
+//-(NoteData *)getCurrentNote:(uint)noteID;
+
+
 @property (nonatomic, strong) NSMutableArray *arrColumnNames;
 @property (nonatomic) int affectedRow;
 @property (nonatomic) long long lastInsertedRowID;
-
-@property (nonatomic, strong) NoteData *noteData;
--(void)saveNoteWithID: (NSUInteger)noeID;
--(void)saveNote:(NoteData *)note;
 
 +(instancetype) sharedInstance;
 

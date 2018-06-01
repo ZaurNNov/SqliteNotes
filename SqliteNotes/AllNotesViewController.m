@@ -15,12 +15,11 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableViewNotes;
 - (IBAction)addNew:(UIBarButtonItem *)sender;
 
-@property (nonatomic, strong) DBManager *dbManager;
-@property (nonatomic, strong) NSArray *arrayFromDB;
-@property (strong, nonatomic) NSDate *createdDate;
-@property (strong, nonatomic) NSDate *currentDate;
+//@property (strong, nonatomic) NSDate *createdDate;
+//@property (strong, nonatomic) NSDate *currentDate;
 @property (nonatomic) int recordNoteID;
 @property (nonatomic, strong) NoteData *notedata;
+@property (nonatomic, strong) NSArray *allNotes;
 
 -(void)loadData;
 
@@ -41,7 +40,6 @@
     self.tableViewNotes.dataSource = self;
     
     // dbase & note class init
-    self.dbManager = [DBManager sharedInstance];
     self.notedata = [[NoteData alloc] init];
     
     // load the data
@@ -49,14 +47,7 @@
 }
 
 -(void)loadData {
-    
-    // query string
-    NSString *query = @"select * from notes";
-    
-    // get result
-    if (self.arrayFromDB) self.arrayFromDB = nil;
-    
-    self.arrayFromDB = [[NSArray alloc] initWithArray:[self.dbManager loadDB:query]];
+    self.allNotes = [[DBManager sharedInstance] getAllNotes];
     [self.tableViewNotes reloadData];
 }
 
@@ -72,11 +63,7 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     ShowNoteViewController *snVC = [segue destinationViewController];
     snVC.selfDelegate = self;
-    if (!self.createdDate) {
-        self.createdDate = [[NSDate alloc] init];
-    }
-    snVC.createdDate = self.createdDate;
-    snVC.recordNoteID = self.recordNoteID;
+    snVC.noteData = self.notedata;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -85,7 +72,7 @@
 
 // TableView VC delegate
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.arrayFromDB.count;
+    return self.allNotes.count;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -96,18 +83,23 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
-    NSInteger indexOfNotename = [self.dbManager.arrColumnNames indexOfObject:@"notename"];
-    NSInteger indexOfNoteID = [self.dbManager.arrColumnNames indexOfObject:@"noteID"];
-    NSInteger indexOfNotebody = [self.dbManager.arrColumnNames indexOfObject:@"notebody"];
-    //    NSInteger indexOfNotecreated = [self.dbManager.arrColumnNames indexOfObject:@"notecreated"];
-    //    NSInteger indexOfNoteedit = [self.dbManager.arrColumnNames indexOfObject:@"noteedit"];
+//    NSInteger indexOfNotename = [self.dbManager.arrColumnNames indexOfObject:@"notename"];
+//    NSInteger indexOfNoteID = [self.dbManager.arrColumnNames indexOfObject:@"noteID"];
+//    NSInteger indexOfNotebody = [self.dbManager.arrColumnNames indexOfObject:@"notebody"];
+//    //    NSInteger indexOfNotecreated = [self.dbManager.arrColumnNames indexOfObject:@"notecreated"];
+//    //    NSInteger indexOfNoteedit = [self.dbManager.arrColumnNames indexOfObject:@"noteedit"];
+//
+//    cell.textLabel.text = [NSString stringWithFormat:@"%@",
+//                           [[self.arrayFromDB objectAtIndex:indexPath.row] objectAtIndex:indexOfNotename]];
+//
+//    cell.detailTextLabel.text = [NSString stringWithFormat:@"ID: %@. %@",
+//                                 [[self.arrayFromDB objectAtIndex:indexPath.row] objectAtIndex:indexOfNoteID],
+//                                 [[self.arrayFromDB objectAtIndex:indexPath.row] objectAtIndex:indexOfNotebody]];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@",
-                           [[self.arrayFromDB objectAtIndex:indexPath.row] objectAtIndex:indexOfNotename]];
     
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"ID: %@. %@",
-                                 [[self.arrayFromDB objectAtIndex:indexPath.row] objectAtIndex:indexOfNoteID],
-                                 [[self.arrayFromDB objectAtIndex:indexPath.row] objectAtIndex:indexOfNotebody]];
+    ///DBG
+    NoteData *note = self.allNotes[indexPath.row];
+    cell.textLabel.text = note.noteName;
     
     return cell;
 }
@@ -115,11 +107,13 @@
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete selected row
-        int recordIDToDelete = [[[self.arrayFromDB objectAtIndex:indexPath.row] objectAtIndex:0] intValue];
+        DBManager *db = [DBManager sharedInstance];
+        
+        int recordIDToDelete = [[[self.allNotes objectAtIndex:indexPath.row] objectAtIndex:0] intValue];
         
         // prepare the query
         NSString *query = [NSString stringWithFormat:@"delete from notes where noteID=%d", recordIDToDelete];
-        [self.dbManager executeQuery:query];
+        [db executeQuery:query];
         
         // reload tableView
         [self updateData];
@@ -128,17 +122,20 @@
 
 -(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     // Get the record ID
-    self.recordNoteID = [[[self.arrayFromDB objectAtIndex:indexPath.row] objectAtIndex:0] intValue];
-    double dateDoudle = [[[self.arrayFromDB objectAtIndex:indexPath.row] objectAtIndex:3] floatValue];
-    self.createdDate = [self dateFromTime:dateDoudle];
+    int recordID = [[[self.allNotes objectAtIndex:indexPath.row] objectAtIndex:0] intValue];
+    self.notedata.noteName = [[self.allNotes objectAtIndex:indexPath.row] objectAtIndex:1];
+    self.notedata.noteBody = [[self.allNotes objectAtIndex:indexPath.row] objectAtIndex:2];
+    self.notedata.editedDate = [NSDate date];
+
+    self.recordNoteID = recordID;
     
     // Prepare edit segue
     [self performSegueWithIdentifier:@"detailNote" sender:self];
 }
 
--(NSDate *)dateFromTime:(double)time {
-    NSDate *dateCreated = [NSDate dateWithTimeIntervalSinceReferenceDate:time];
-    return dateCreated;
-}
+//-(NSDate *)dateFromTime:(double)time {
+//    NSDate *dateCreated = [NSDate dateWithTimeIntervalSinceReferenceDate:time];
+//    return dateCreated;
+//}
 
 @end

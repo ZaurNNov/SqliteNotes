@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NoteData.h"
 
 @protocol ShowNoteViewControllerDelegate
 
@@ -17,7 +18,7 @@
 @interface ShowNoteViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate, ShowNoteViewControllerDelegate>
 
 @property (nonatomic, strong) id<ShowNoteViewControllerDelegate> selfDelegate;
-@property (nonatomic, strong) NSDate *createdDate;
 @property (nonatomic) int recordNoteID;
+@property (nonatomic, strong) NoteData *noteData;
 
 @end

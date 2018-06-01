@@ -14,6 +14,6 @@
 @property (nonatomic, strong) NSString *noteBody;
 @property (nonatomic, strong) NSDate *createdDate;
 @property (nonatomic, strong) NSDate *editedDate;
-//@property (nonatomic) NSInteger noteID;
+//@property (nonatomic) uint noteID;
 
 @end

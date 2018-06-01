@@ -71,6 +71,15 @@
     return (NSArray *)self.resultMutableArray;
 }
 
+-(NSArray *)getAllNotes {
+    // query string
+    NSString *query = @"select * from notes";
+    
+    // get result
+    NSArray *array = [NSArray arrayWithArray:[self loadDB:query]];
+    return array;
+}
+
 -(void)executeQuery:(NSString *)query
 {
     // run the query and indicate that is executable
@@ -94,8 +103,6 @@
     // Execute the query.
     [self executeQuery:query];
 }
-
-
 
 -(void)runQuery:(const char *)query isQueryExecutable:(BOOL)queryExecutable
 {
