@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NoteData.h"
 
 @interface DBManager : NSObject
 
@@ -17,6 +18,10 @@
 @property (nonatomic, strong) NSMutableArray *arrColumnNames;
 @property (nonatomic) int affectedRow;
 @property (nonatomic) long long lastInsertedRowID;
+
+@property (nonatomic, strong) NoteData *noteData;
+-(void)saveNoteWithID: (NSUInteger)noeID;
+-(void)saveNote:(NoteData *)note;
 
 +(instancetype) sharedInstance;
 

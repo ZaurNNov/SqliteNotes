@@ -17,6 +17,7 @@
 		CE96D0E420BEE1790089CDEB /* AllNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE96D0E320BEE1790089CDEB /* AllNotesViewController.m */; };
 		CE96D0E720BEE20B0089CDEB /* ShowNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE96D0E620BEE20B0089CDEB /* ShowNoteViewController.m */; };
 		CE96D0E920BF007C0089CDEB /* noteDB.sql in Resources */ = {isa = PBXBuildFile; fileRef = CE96D0E820BF007C0089CDEB /* noteDB.sql */; };
+		CEF17B5020C0525E008DBC4C /* NoteData.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF17B4F20C0525E008DBC4C /* NoteData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,8 @@
 		CE96D0E520BEE20B0089CDEB /* ShowNoteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShowNoteViewController.h; sourceTree = "<group>"; };
 		CE96D0E620BEE20B0089CDEB /* ShowNoteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowNoteViewController.m; sourceTree = "<group>"; };
 		CE96D0E820BF007C0089CDEB /* noteDB.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = noteDB.sql; sourceTree = "<group>"; };
+		CEF17B4E20C0525E008DBC4C /* NoteData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoteData.h; sourceTree = "<group>"; };
+		CEF17B4F20C0525E008DBC4C /* NoteData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoteData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +87,8 @@
 				CE96D0E320BEE1790089CDEB /* AllNotesViewController.m */,
 				CE96D0E520BEE20B0089CDEB /* ShowNoteViewController.h */,
 				CE96D0E620BEE20B0089CDEB /* ShowNoteViewController.m */,
+				CEF17B4E20C0525E008DBC4C /* NoteData.h */,
+				CEF17B4F20C0525E008DBC4C /* NoteData.m */,
 			);
 			path = SqliteNotes;
 			sourceTree = "<group>";
@@ -168,6 +173,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE96D0E420BEE1790089CDEB /* AllNotesViewController.m in Sources */,
+				CEF17B5020C0525E008DBC4C /* NoteData.m in Sources */,
 				CE96D0D420BED3170089CDEB /* main.m in Sources */,
 				CE96D0E720BEE20B0089CDEB /* ShowNoteViewController.m in Sources */,
 				CE96D0C620BED3160089CDEB /* AppDelegate.m in Sources */,
