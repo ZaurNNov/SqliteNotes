@@ -8,6 +8,7 @@
 
 #import "DBManager.h"
 #import <sqlite3.h>
+#import "NSObject+customCategory.h"
 
 @interface DBManager()
 
@@ -78,6 +79,53 @@
     // get result
     NSArray *array = [NSArray arrayWithArray:[self loadDB:query]];
     return array;
+}
+
+-(NSArray *)getAllNotedataArray {
+    
+    NSMutableArray *notes = [NSMutableArray new];
+    
+    NSString *query = @"select noteID, notename, notebody, notecreated, noteedit from notes";
+    
+    NSString *databasePath = [self.dd stringByAppendingPathComponent:self.dbFilename];
+    
+    sqlite3 *sqlite3Database;
+    // Open the database.
+    if((sqlite3_open([databasePath UTF8String], &sqlite3Database) == SQLITE_OK)) {
+        
+        sqlite3_stmt *compiledStatement;
+        if((sqlite3_prepare_v2(sqlite3Database, [query UTF8String], -1, &compiledStatement, NULL)) == SQLITE_OK) {
+            
+            NoteData *note;
+            while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
+                note = [[NoteData alloc] init];
+                note.noteID = sqlite3_column_int(compiledStatement, 0);
+                char *dbDataAsCharsName = (char *)sqlite3_column_text(compiledStatement, 1);
+                char *dbDataAsCharsBody = (char *)sqlite3_column_text(compiledStatement, 2);
+                
+                if (dbDataAsCharsName != NULL) {
+                    note.noteName = [NSString stringWithUTF8String:dbDataAsCharsName];
+                }
+                
+                if (dbDataAsCharsBody != NULL) {
+                    note.noteBody = [NSString stringWithUTF8String:dbDataAsCharsBody];
+                }
+                
+                double cd = sqlite3_column_double(compiledStatement, 3);
+                double ed = sqlite3_column_double(compiledStatement, 4);
+                note.createdDate = [self dateFromTime:cd];
+                note.editedDate = [self dateFromTime:ed];
+                
+                [notes addObject:note];
+            }
+        }
+        // Release the compiled statement from memory
+        sqlite3_finalize(compiledStatement);
+    }
+    // close connection
+    sqlite3_close(sqlite3Database);
+    
+    return notes;
 }
 
 -(void)executeQuery:(NSString *)query

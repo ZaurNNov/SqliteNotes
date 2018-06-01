@@ -18,7 +18,7 @@
 -(void)saveNoteWithID:(uint)noteID note:(NoteData *)note;
 -(void)saveNote:(NoteData *)note;
 -(NSArray *)getAllNotes;
-//-(NoteData *)getCurrentNote:(uint)noteID;
+-(NSArray *)getAllNotedataArray;
 
 
 @property (nonatomic, strong) NSMutableArray *arrColumnNames;

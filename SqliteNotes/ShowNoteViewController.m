@@ -82,24 +82,33 @@
         [db saveNote:self.noteData];
         
     } else {
-        [self updateNoteFromFields];
-        [db saveNoteWithID:self.recordNoteID note:self.noteData];
+        self.noteData = [self updateNoteFromFields];
+        [db saveNote:self.noteData];
+//        [db saveNoteWithID:self.recordNoteID note:self.noteData];
+        NSArray *arr = [NSArray arrayWithArray:[db getAllNotes]];
+        NSLog(@"%@", arr);
     }
     
-    // If the query was successfully executed then pop the view controller.
-    if (db.affectedRow != 0) {
-        NSLog(@"Query was executed successfully. Affected rows = %d", db.affectedRow);
-        
-        // inform delegate controller
-        [self.selfDelegate updateData];
-        
-        // Pop the view controller.
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    else{
-        NSLog(@"%@: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-        NSLog(@"Could not execute the query.");
-    }
+    // inform delegate controller
+    [self.selfDelegate updateData];
+    
+    // Pop the view controller.
+    [self.navigationController popViewControllerAnimated:YES];
+    
+//    // If the query was successfully executed then pop the view controller.
+//    if (db.affectedRow != 0) {
+//        NSLog(@"Query was executed successfully. Affected rows = %d", db.affectedRow);
+//
+//        // inform delegate controller
+//        [self.selfDelegate updateData];
+//
+//        // Pop the view controller.
+//        [self.navigationController popViewControllerAnimated:YES];
+//    }
+//    else{
+//        NSLog(@"%@: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+//        NSLog(@"Could not execute the query.");
+//    }
 
 }
 

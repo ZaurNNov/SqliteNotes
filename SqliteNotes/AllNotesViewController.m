@@ -20,6 +20,7 @@
 @property (nonatomic) int recordNoteID;
 @property (nonatomic, strong) NoteData *notedata;
 @property (nonatomic, strong) NSArray *allNotes;
+@property (nonatomic, strong) NSArray *allNotes2;
 
 -(void)loadData;
 
@@ -47,7 +48,7 @@
 }
 
 -(void)loadData {
-    self.allNotes = [[DBManager sharedInstance] getAllNotes];
+    self.allNotes = [[DBManager sharedInstance] getAllNotedataArray];
     [self.tableViewNotes reloadData];
 }
 
@@ -83,23 +84,12 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
-//    NSInteger indexOfNotename = [self.dbManager.arrColumnNames indexOfObject:@"notename"];
-//    NSInteger indexOfNoteID = [self.dbManager.arrColumnNames indexOfObject:@"noteID"];
-//    NSInteger indexOfNotebody = [self.dbManager.arrColumnNames indexOfObject:@"notebody"];
-//    //    NSInteger indexOfNotecreated = [self.dbManager.arrColumnNames indexOfObject:@"notecreated"];
-//    //    NSInteger indexOfNoteedit = [self.dbManager.arrColumnNames indexOfObject:@"noteedit"];
-//
-//    cell.textLabel.text = [NSString stringWithFormat:@"%@",
-//                           [[self.arrayFromDB objectAtIndex:indexPath.row] objectAtIndex:indexOfNotename]];
-//
-//    cell.detailTextLabel.text = [NSString stringWithFormat:@"ID: %@. %@",
-//                                 [[self.arrayFromDB objectAtIndex:indexPath.row] objectAtIndex:indexOfNoteID],
-//                                 [[self.arrayFromDB objectAtIndex:indexPath.row] objectAtIndex:indexOfNotebody]];
-    
-    
     ///DBG
     NoteData *note = self.allNotes[indexPath.row];
+    NSLog(@"\n%@, %@, %u, %@, %@\n", note.noteName, note.noteBody, note.noteID, note.editedDate, note.createdDate);
+    
     cell.textLabel.text = note.noteName;
+//    cell.detailTextLabel.text = note.noteBody;
     
     return cell;
 }
