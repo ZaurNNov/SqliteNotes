@@ -14,6 +14,8 @@
 @interface AllNotesViewController () <ShowNoteViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableViewNotes;
 - (IBAction)addNew:(UIBarButtonItem *)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *eraseAllButton;
+- (IBAction)eraseAllAction:(UIBarButtonItem *)sender;
 
 //@property (strong, nonatomic) NSDate *createdDate;
 //@property (strong, nonatomic) NSDate *currentDate;
@@ -46,8 +48,23 @@
     [self updateData];
 }
 
+//- (void)viewWillAppear:(BOOL)animated
+//{
+//    [super viewWillAppear:animated];
+//
+//    // load the data
+//    [self updateData];
+//}
+
 -(void)loadData {
     self.allNotes = [[DBManager sharedInstance] getAllNotedataArray];
+    
+    if (self.allNotes.count > 0) {
+        self.navigationItem.leftBarButtonItem.enabled = YES;
+    } else {
+        self.navigationItem.leftBarButtonItem.enabled = NO;
+    }
+    
     [self.tableViewNotes reloadData];
 }
 
@@ -111,22 +128,14 @@
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete selected row
-//        DBManager *db = [DBManager sharedInstance];
-//
-//        int recordIDToDelete = [[[self.allNotes objectAtIndex:indexPath.row] objectAtIndex:0] intValue];
-//
-//        // prepare the query
-//        NSString *query = [NSString stringWithFormat:@"delete from notes where noteID=%d", recordIDToDelete];
-//        [db executeQuery:query];
-//
-//        // reload tableView
-//        [self updateData];
+        
+        NoteData *note = self.allNotes[indexPath.row];
+        [[DBManager sharedInstance] deleteNoteWithID:note.noteID];
+
+        // reload tableView
+        [self updateData];
     }
 }
-
-//- (void)prepareNoteForEditing:(NSIndexPath * _Nonnull)indexPath {
-//    self.notedata = [self.allNotes objectAtIndex:indexPath.row];
-//}
 
 -(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     // Get the record ID
@@ -143,4 +152,10 @@
 //    return dateCreated;
 //}
 
+- (IBAction)eraseAllAction:(UIBarButtonItem *)sender {
+    [[DBManager sharedInstance] clearAll];
+    
+    // load the data
+    [self loadData];
+}
 @end

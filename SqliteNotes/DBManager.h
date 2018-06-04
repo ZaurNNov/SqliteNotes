@@ -12,12 +12,13 @@
 @interface DBManager : NSObject
 
 //-(instancetype)initWithDBFilename:(NSString *)dbName;
--(NSArray *)loadDB:(NSString *)query;
--(void)executeQuery:(NSString *)query;
+//-(NSArray *)loadDB:(NSString *)query;
+//-(void)executeQuery:(NSString *)query;
 
 -(void)saveNewNote:(NoteData *)note;
 -(void)saveOldNote:(NoteData *)note withID:(uint)noteId;
-//-(void)saveOldNote:(NoteData *)note;
+-(void)deleteNoteWithID:(int)deleteID;
+-(void)clearAll;
 
 -(NSArray *)getAllNotedataArray;
 -(int)getCurrentNoteId;

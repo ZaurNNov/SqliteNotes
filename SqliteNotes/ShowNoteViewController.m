@@ -77,10 +77,10 @@
     self.noteData = [self updateNoteFromFields];
     
     if (self.recordNoteID == -1) {
-        // edit old note
+        // save new note
         [db saveNewNote:self.noteData];
     } else {
-        // save new note
+        // edit old note
         [db saveOldNote:self.noteData withID:self.recordNoteID];
     }
     

@@ -10,7 +10,7 @@
 
 @interface NoteData : NSObject
 
-@property (nonatomic, unsafe_unretained) uint noteID;
+@property (nonatomic) int noteID;
 @property (nonatomic, strong) NSString *noteName;
 @property (nonatomic, strong) NSString *noteBody;
 @property (nonatomic, strong) NSDate *createdDate;

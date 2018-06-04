@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SqliteNotes/DBManager.m"
-            timestampString = "549797443.346984"
+            timestampString = "549807713.654211"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
+            startingLineNumber = "304"
+            endingLineNumber = "304"
             landmarkName = "-runQuery:isQueryExecutable:"
             landmarkType = "7">
          </BreakpointContent>
@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SqliteNotes/DBManager.m"
-            timestampString = "549797443.347079"
+            timestampString = "549807713.655076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
+            startingLineNumber = "304"
+            endingLineNumber = "304"
             landmarkName = "-runQuery:isQueryExecutable:"
             landmarkType = "7">
          </BreakpointContent>
@@ -52,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SqliteNotes/AllNotesViewController.m"
-            timestampString = "549797443.347158"
+            timestampString = "549807713.655691"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "-updateData"
             landmarkType = "7">
          </BreakpointContent>
@@ -68,7 +68,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SqliteNotes/ShowNoteViewController.m"
-            timestampString = "549797443.347213"
+            timestampString = "549807713.655789"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "75"
@@ -84,11 +84,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SqliteNotes/AllNotesViewController.m"
-            timestampString = "549797443.347595"
+            timestampString = "549807713.655869"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "-tableView:accessoryButtonTappedForRowWithIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -100,7 +100,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SqliteNotes/ShowNoteViewController.m"
-            timestampString = "549797443.347649"
+            timestampString = "549807713.655943"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "79"
@@ -112,31 +112,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SqliteNotes/DBManager.m"
-            timestampString = "549797443.347917"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
-            landmarkName = "-executeQuery:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SqliteNotes/DBManager.m"
-            timestampString = "549797443.347976"
+            timestampString = "549807713.6560481"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
+            startingLineNumber = "262"
+            endingLineNumber = "262"
             landmarkName = "-runQuery:isQueryExecutable:"
             landmarkType = "7">
          </BreakpointContent>
@@ -148,11 +132,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SqliteNotes/DBManager.m"
-            timestampString = "549797443.348031"
+            timestampString = "549807713.656783"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
             landmarkName = "-runQuery:isQueryExecutable:"
             landmarkType = "7">
          </BreakpointContent>
@@ -164,11 +148,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SqliteNotes/DBManager.m"
-            timestampString = "549797443.348084"
+            timestampString = "549807713.657396"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
             landmarkName = "-runQuery:isQueryExecutable:"
             landmarkType = "7">
          </BreakpointContent>
@@ -180,11 +164,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SqliteNotes/DBManager.m"
-            timestampString = "549797443.3481359"
+            timestampString = "549807713.657944"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
             landmarkName = "-runQuery:isQueryExecutable:"
             landmarkType = "7">
          </BreakpointContent>
@@ -196,11 +180,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SqliteNotes/DBManager.m"
-            timestampString = "549797443.348189"
+            timestampString = "549807713.658551"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "234"
-            endingLineNumber = "234"
+            startingLineNumber = "300"
+            endingLineNumber = "300"
             landmarkName = "-runQuery:isQueryExecutable:"
             landmarkType = "7">
          </BreakpointContent>
@@ -212,11 +196,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SqliteNotes/DBManager.m"
-            timestampString = "549797443.348242"
+            timestampString = "549807713.659086"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
+            startingLineNumber = "306"
+            endingLineNumber = "306"
             landmarkName = "-runQuery:isQueryExecutable:"
             landmarkType = "7">
          </BreakpointContent>
@@ -228,11 +212,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SqliteNotes/DBManager.m"
-            timestampString = "549797443.348294"
+            timestampString = "549807713.65986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
             landmarkName = "-runQuery:isQueryExecutable:"
             landmarkType = "7">
          </BreakpointContent>
@@ -244,11 +228,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SqliteNotes/DBManager.m"
-            timestampString = "549797443.348345"
+            timestampString = "549807713.660467"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "245"
+            endingLineNumber = "245"
             landmarkName = "-runUpdateQueryNote:"
             landmarkType = "7">
          </BreakpointContent>
@@ -260,11 +244,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SqliteNotes/DBManager.m"
-            timestampString = "549797443.348389"
+            timestampString = "549807713.660991"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
             landmarkName = "-runUpdateQueryNote:"
             landmarkType = "7">
          </BreakpointContent>
@@ -275,13 +259,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SqliteNotes/DBManager.m"
-            timestampString = "549797443.34843"
+            filePath = "SqliteNotes/AllNotesViewController.m"
+            timestampString = "549807713.6615109"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
-            landmarkName = "-runUpdateQueryNote:"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "-addNew:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -292,12 +276,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SqliteNotes/DBManager.m"
-            timestampString = "549797443.348473"
+            timestampString = "549807713.661581"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
-            landmarkName = "-runUpdateQueryNote:"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "-getCurrentNoteId"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -308,12 +292,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SqliteNotes/DBManager.m"
-            timestampString = "549797443.348515"
+            timestampString = "549807713.662454"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
-            landmarkName = "-runUpdateQueryNote:"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "-getCurrentNoteId"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -324,12 +308,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SqliteNotes/DBManager.m"
-            timestampString = "549797443.348557"
+            timestampString = "549807713.663648"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
-            landmarkName = "-runUpdateQueryNote:"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "-getCurrentNoteId"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -340,28 +324,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SqliteNotes/DBManager.m"
-            timestampString = "549797443.348599"
+            timestampString = "549807713.6645859"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "-runUpdateQueryNote:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SqliteNotes/DBManager.m"
-            timestampString = "549797443.348642"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
-            landmarkName = "-runUpdateQueryNote:"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
+            landmarkName = "-clearAll"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

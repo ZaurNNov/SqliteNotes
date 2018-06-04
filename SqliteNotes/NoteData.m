@@ -20,7 +20,7 @@
 
 @implementation NoteData
 
-- (instancetype)initWithNoteId:(uint)noteID
+- (instancetype)initWithNoteId:(int)noteID
                       noteName:(NSString *)noteName
                       noteBody:(NSString *)noteBody
                    createdDate:(NSDate *)createdDate

@@ -153,6 +153,44 @@
     [self runQuery:[query UTF8String] isQueryExecutable:YES];
 }
 
+-(void)deleteNoteWithID:(int)deleteID {
+    // Delete selected row
+    
+    // prepare the query
+    NSString *queryString = [NSString stringWithFormat:@"delete from notes where noteID=%d", deleteID];
+    const char* query = [queryString UTF8String];
+    
+    // Create a sqlite object & path
+    sqlite3 *sqlite3Database;
+    NSString *databasePath = [self.dd stringByAppendingPathComponent:self.dbFilename];
+    
+    // Open the database.
+    if((sqlite3_open([databasePath UTF8String], &sqlite3Database) == SQLITE_OK)) {
+        
+        sqlite3_stmt *compiledStatement;
+        if((sqlite3_prepare_v2(sqlite3Database, query, -1, &compiledStatement, NULL)) == SQLITE_OK) {
+            
+            if(sqlite3_step(compiledStatement) == SQLITE_OK) {
+                NSLog(@"row %d delete!", deleteID);
+            }
+        }
+        // Release the compiled statement from memory
+        sqlite3_finalize(compiledStatement);
+    }
+    // close connection
+    sqlite3_close(sqlite3Database);
+}
+
+-(void)clearAll {
+    
+    int count = [self getCurrentNoteId];
+    for (int i = 0; i <= count; i++) {
+        [self deleteNoteWithID:i];
+    }
+    
+    NSLog(@"%d notes was delete!", count);
+}
+
 -(void)saveNewNote:(NoteData *)note {
     // for create new
     NSString *query = [NSString stringWithFormat:@"insert into notes values(null, '%@', '%@', %f, %f)", note.noteName, note.noteBody, [note.createdDate timeIntervalSinceReferenceDate], [note.editedDate timeIntervalSinceReferenceDate]];

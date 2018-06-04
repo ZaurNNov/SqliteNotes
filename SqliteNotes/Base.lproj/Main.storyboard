@@ -59,6 +59,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Notes" id="N5k-LX-VOf">
+                        <barButtonItem key="leftBarButtonItem" title="ERASE ALL" id="obB-km-4zn">
+                            <connections>
+                                <action selector="eraseAllAction:" destination="BYZ-38-t0r" id="HfN-5v-qGC"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="w4R-nm-2AN">
                             <connections>
                                 <action selector="addNew:" destination="BYZ-38-t0r" id="6RU-3b-wfp"/>
@@ -66,6 +71,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="eraseAllButton" destination="obB-km-4zn" id="xr5-h4-9yI"/>
                         <outlet property="tableViewNotes" destination="HCs-Kr-Vde" id="VvU-k2-1fV"/>
                         <segue destination="IPq-aY-xmc" kind="show" identifier="detailNote" id="zCr-cH-vJW"/>
                     </connections>
