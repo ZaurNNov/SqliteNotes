@@ -78,6 +78,7 @@
     ShowNoteViewController *snVC = [segue destinationViewController];
     snVC.selfDelegate = self;
     snVC.noteData = self.notedata;
+    snVC.recordNoteID = self.recordNoteID;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -102,7 +103,7 @@
     NSLog(@"\n%@, %@, %u, %@, %@\n", note.noteName, note.noteBody, note.noteID, note.editedDate, note.createdDate);
     
     cell.textLabel.text = note.noteName;
-//    cell.detailTextLabel.text = note.noteBody;
+    cell.detailTextLabel.text = note.noteBody;
     
     return cell;
 }
@@ -110,27 +111,27 @@
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete selected row
-        DBManager *db = [DBManager sharedInstance];
-        
-        int recordIDToDelete = [[[self.allNotes objectAtIndex:indexPath.row] objectAtIndex:0] intValue];
-        
-        // prepare the query
-        NSString *query = [NSString stringWithFormat:@"delete from notes where noteID=%d", recordIDToDelete];
-        [db executeQuery:query];
-        
-        // reload tableView
-        [self updateData];
+//        DBManager *db = [DBManager sharedInstance];
+//
+//        int recordIDToDelete = [[[self.allNotes objectAtIndex:indexPath.row] objectAtIndex:0] intValue];
+//
+//        // prepare the query
+//        NSString *query = [NSString stringWithFormat:@"delete from notes where noteID=%d", recordIDToDelete];
+//        [db executeQuery:query];
+//
+//        // reload tableView
+//        [self updateData];
     }
 }
 
-- (void)prepareNoteForEditing:(NSIndexPath * _Nonnull)indexPath {
-    self.notedata = [self.allNotes objectAtIndex:indexPath.row];
-}
+//- (void)prepareNoteForEditing:(NSIndexPath * _Nonnull)indexPath {
+//    self.notedata = [self.allNotes objectAtIndex:indexPath.row];
+//}
 
 -(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     // Get the record ID
-    [self prepareNoteForEditing:indexPath];
-    
+//    [self prepareNoteForEditing:indexPath];
+    self.notedata = [self.allNotes objectAtIndex:indexPath.row];
     self.recordNoteID = self.notedata.noteID;
 
     // Prepare edit segue

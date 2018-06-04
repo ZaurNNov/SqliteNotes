@@ -15,11 +15,11 @@
 -(NSArray *)loadDB:(NSString *)query;
 -(void)executeQuery:(NSString *)query;
 
-//-(void)saveNoteWithID:(uint)noteID note:(NoteData *)note;
 -(void)saveNewNote:(NoteData *)note;
--(void)saveOldNote:(NoteData *)note;
--(NSArray *)getAllNotedataArray;
+-(void)saveOldNote:(NoteData *)note withID:(uint)noteId;
+//-(void)saveOldNote:(NoteData *)note;
 
+-(NSArray *)getAllNotedataArray;
 
 @property (nonatomic, strong) NSMutableArray *arrColumnNames;
 @property (nonatomic) int affectedRow;

@@ -125,30 +125,61 @@
     [self runQuery:[query UTF8String] isQueryExecutable:YES];
 }
 
-//-(void)saveNoteWithID:(uint)noteID note:(NoteData *)note {
-//    // for update
-//    int intID = noteID;
-//    NSString *query = [NSString stringWithFormat:@"update notes set notename='%@', notebody='%@', notecreated=%f, noteedit=%f where noteID=%d", note.noteName, note.noteBody, [note.createdDate timeIntervalSinceReferenceDate], [note.editedDate timeIntervalSinceReferenceDate], intID];
-//
-//    // Execute the query.
-//    [self executeQuery:query];
-//}
-
 -(void)saveNewNote:(NoteData *)note {
     // for create new
-    
     NSString *query = [NSString stringWithFormat:@"insert into notes values(null, '%@', '%@', %f, %f)", note.noteName, note.noteBody, [note.createdDate timeIntervalSinceReferenceDate], [note.editedDate timeIntervalSinceReferenceDate]];
     
     // Execute the query.
     [self executeQuery:query];
 }
 
--(void)saveOldNote:(NoteData *)note {
+-(void)saveOldNote:(NoteData *)note withID:(uint)noteId {
+    NoteData *oldNote = note;
+    oldNote.noteID = noteId;
+    [self runUpdateQueryNote:(NoteData *) oldNote];
+}
+
+-(void)runUpdateQueryNote:(NoteData *)note {
     
-    NSString *query = [NSString stringWithFormat:@"update notes set notename='%@', notebody='%@', notecreated=%f, noteedit=%f where noteID=%d", note.noteName, note.noteBody, [note.createdDate timeIntervalSinceReferenceDate], [note.editedDate timeIntervalSinceReferenceDate], note.noteID];
+    NSString *queryString = [NSString stringWithFormat:@"update notes set notename='%@', notebody='%@', notecreated=%f, noteedit=%f where noteID=%d", note.noteName, note.noteBody, [note.createdDate timeIntervalSinceReferenceDate], [note.editedDate timeIntervalSinceReferenceDate], note.noteID];
     
-    // Execute the query.
-    [self executeQuery:query];
+    const char* query = [queryString UTF8String];
+    
+    // Create a sqlite object & path
+    sqlite3 *sqlite3Database;
+    NSString *databasePath = [self.dd stringByAppendingPathComponent:self.dbFilename];
+    
+    // Open the database.
+    if((sqlite3_open([databasePath UTF8String], &sqlite3Database) == SQLITE_OK)) {
+        
+        sqlite3_stmt *compiledStatement;
+        if((sqlite3_prepare_v2(sqlite3Database, query, -1, &compiledStatement, NULL)) == SQLITE_OK) {
+            
+            if(sqlite3_step(compiledStatement) == SQLITE_OK) {
+                
+                // For text and tade time
+                // SQLITE_API int sqlite3_bind_text(sqlite3_stmt*,int,const char*,int,void(*)(void*));
+                // SQLITE_API int sqlite3_bind_double(sqlite3_stmt*, int, double);
+                
+                const char *charsName = [note.noteName UTF8String];
+                const char *charsBody = [note.noteBody UTF8String];
+                double cd = [self dateDoubleFromDate:note.createdDate];
+                double ed = [self dateDoubleFromDate:note.editedDate];
+                
+                
+                sqlite3_bind_text(compiledStatement, 1, charsName, NULL, NULL);
+                sqlite3_bind_text(compiledStatement, 2, charsBody, NULL, NULL);
+                sqlite3_bind_double(compiledStatement, 3, cd);
+                sqlite3_bind_double(compiledStatement, 4, ed);
+                
+                sqlite3_step(compiledStatement);
+            }
+        }
+        // Release the compiled statement from memory
+        sqlite3_finalize(compiledStatement);
+    }
+    // close connection
+    sqlite3_close(sqlite3Database);
 }
 
 -(void)runQuery:(const char *)query isQueryExecutable:(BOOL)queryExecutable

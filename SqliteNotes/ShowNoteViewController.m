@@ -74,15 +74,14 @@
     }
 
     DBManager *db = [DBManager sharedInstance];
+    self.noteData = [self updateNoteFromFields];
     
-    if (self.recordNoteID < 0) {
-        
-        self.noteData = [self updateNoteFromFields];
+    if (self.recordNoteID == -1) {
+        // edit old note
         [db saveNewNote:self.noteData];
-        
     } else {
-        self.noteData = [self updateNoteFromFields];
-        [db saveOldNote:self.noteData];
+        // save new note
+        [db saveOldNote:self.noteData withID:self.recordNoteID];
     }
     
     // inform delegate controller
