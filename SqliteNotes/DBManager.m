@@ -76,7 +76,7 @@
     
     NSMutableArray *notes = [NSMutableArray new];
     
-    NSString *query = @"select noteID, notename, notebody, notecreated, noteedit from notes";
+    NSString *query = @"select noteID, notename, notebody, notecreated, noteedit from notes order by noteedit asc";
     
     NSString *databasePath = [self.dd stringByAppendingPathComponent:self.dbFilename];
     
@@ -117,6 +117,34 @@
     sqlite3_close(sqlite3Database);
     
     return notes;
+}
+
+-(int)getCurrentNoteId {
+    int lastNoteId = 0;
+    
+    NSString *query = @"select noteID from notes order by noteID asc";
+    
+    NSString *databasePath = [self.dd stringByAppendingPathComponent:self.dbFilename];
+    
+    sqlite3 *sqlite3Database;
+    // Open the database.
+    if((sqlite3_open([databasePath UTF8String], &sqlite3Database) == SQLITE_OK)) {
+        
+        sqlite3_stmt *compiledStatement;
+        if((sqlite3_prepare_v2(sqlite3Database, [query UTF8String], -1, &compiledStatement, NULL)) == SQLITE_OK) {
+            
+            //NoteData *note;
+            while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
+               lastNoteId = sqlite3_column_int(compiledStatement, 0);
+            }
+        }
+        // Release the compiled statement from memory
+        sqlite3_finalize(compiledStatement);
+    }
+    // close connection
+    sqlite3_close(sqlite3Database);
+    
+    return (lastNoteId);
 }
 
 -(void)executeQuery:(NSString *)query
@@ -167,8 +195,8 @@
                 double ed = [self dateDoubleFromDate:note.editedDate];
                 
                 
-                sqlite3_bind_text(compiledStatement, 1, charsName, NULL, NULL);
-                sqlite3_bind_text(compiledStatement, 2, charsBody, NULL, NULL);
+                sqlite3_bind_text(compiledStatement, 1, charsName, -1, NULL);
+                sqlite3_bind_text(compiledStatement, 2, charsBody, -1, NULL);
                 sqlite3_bind_double(compiledStatement, 3, cd);
                 sqlite3_bind_double(compiledStatement, 4, ed);
                 

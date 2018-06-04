@@ -20,6 +20,7 @@
 //-(void)saveOldNote:(NoteData *)note;
 
 -(NSArray *)getAllNotedataArray;
+-(int)getCurrentNoteId;
 
 @property (nonatomic, strong) NSMutableArray *arrColumnNames;
 @property (nonatomic) int affectedRow;
