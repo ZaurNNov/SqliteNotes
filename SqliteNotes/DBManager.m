@@ -104,8 +104,10 @@
                 
                 double cd = sqlite3_column_double(compiledStatement, 3);
                 double ed = sqlite3_column_double(compiledStatement, 4);
-                note.createdDate = [self dateFromTime:cd];
-                note.editedDate = [self dateFromTime:ed];
+                note.createdDate = [NSDate dateWithTimeIntervalSinceReferenceDate:cd];
+                note.editedDate = [NSDate dateWithTimeIntervalSinceReferenceDate:ed];
+//                note.createdDate = [NSDate dateWithTimeIntervalSinceNow:cd];
+//                note.editedDate = [NSDate dateWithTimeIntervalSinceNow:ed];
                 
                 [notes addObject:note];
             }
@@ -229,14 +231,15 @@
                 
                 const char *charsName = [note.noteName UTF8String];
                 const char *charsBody = [note.noteBody UTF8String];
-                double cd = [self dateDoubleFromDate:note.createdDate];
-                double ed = [self dateDoubleFromDate:note.editedDate];
+//                double cd = [self dateDoubleFromDate:note.createdDate];
+//                double ed = [self dateDoubleFromDate:note.editedDate];
                 
-                
+                double cdd =[note.createdDate timeIntervalSinceReferenceDate];
+                double edd = [note.editedDate timeIntervalSinceReferenceDate];
                 sqlite3_bind_text(compiledStatement, 1, charsName, -1, NULL);
                 sqlite3_bind_text(compiledStatement, 2, charsBody, -1, NULL);
-                sqlite3_bind_double(compiledStatement, 3, cd);
-                sqlite3_bind_double(compiledStatement, 4, ed);
+                sqlite3_bind_double(compiledStatement, 3, cdd);
+                sqlite3_bind_double(compiledStatement, 4, edd);
                 
                 sqlite3_step(compiledStatement);
             }

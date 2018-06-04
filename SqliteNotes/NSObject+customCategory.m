@@ -10,58 +10,58 @@
 
 @implementation NSObject (customCategory)
 
--(NSString *)dateFofmattedFromDouble:(double)time {
+- (NSDateFormatter *)dateFormatter {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSString *dateStrFormat = @"yyyy-MMM-dd hh:mm:ss";
+    [dateFormatter setDateFormat:dateStrFormat];
+//    [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:+0200]];
+    return dateFormatter;
+}
+
+-(NSString *)setCustomStringFromDate:(NSDate *)date {
     //Example:
     //double timeCreated = [[[results objectAtIndex:0] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"notecreated"]] doubleValue];
     
-    NSString *dateStrFormat = @"YYYY-MM-dd HH:MM:ss";
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    dateFormat.dateFormat = dateStrFormat;
-    [dateFormat setTimeZone:[NSTimeZone systemTimeZone]];
-    NSString *currentDateString = [dateFormat stringFromDate:[self dateFromTime:time]];
-    //NSLog(@"Time NSDateFormatter: %@", [dateFormat stringFromDate:[self dateFromTime:time]]);
+    NSDateFormatter * dateFormatter = [self dateFormatter];
+    NSString *currentDateString = [dateFormatter stringFromDate:date];
     return currentDateString;
 }
 
--(NSString *)dateFofmattedFromDate:(NSDate *)date {
-    //Example:
-    //double timeCreated = [[[results objectAtIndex:0] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"notecreated"]] doubleValue];
-    
-    NSString *dateStrFormat = @"YYYY-MM-dd HH:MM:ss";
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    dateFormat.dateFormat = dateStrFormat;
-    [dateFormat setTimeZone:[NSTimeZone systemTimeZone]];
-    //NSLog(@"Time NSDateFormatter: %@", [dateFormat stringFromDate:[self dateFromTime:time]]);
-    NSString *currentDateString = [dateFormat stringFromDate:date];
-    //NSLog(@"Prfile creation date is = %@",ProfileCreationDate);
-    return currentDateString;
-}
-
--(NSDate *)dateFromTime:(double)time {
-    NSDate *dateCreated = [NSDate dateWithTimeIntervalSinceReferenceDate:time];
-    return dateCreated;
-}
-
--(double)dateDoubleFromDate:(NSDate *)date {
-    return [date timeIntervalSinceReferenceDate];
-}
-
--(NSDate *)dateFromText:(NSString *)dateText {
+-(NSDate *)setCustomDateFromString:(NSString *)dateText {
     //dateText = NSString *ss = @"2012-09-16 23:59:59";
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:+0020]];
-    [dateFormatter setLocale:[NSLocale currentLocale]];
+    NSDateFormatter * dateFormatter = [self dateFormatter];
     NSDate *capturedDate = [dateFormatter dateFromString: dateText];
-    NSLog(@"Captured Date %@", [capturedDate description]);
     return capturedDate;
 }
 
--(NSString *)textFromDate:(NSDate *)date {
-    double dt = [self dateDoubleFromDate:date];
-    return [self dateFofmattedFromDouble:dt];
+-(double)setCustomDoubleFromDate:(NSDate *)date {
+    return [date timeIntervalSinceDate:date];
+    
 }
+
+//-(NSDate *)dateFromTime:(double)time {
+//    NSDate *dateCreated = [NSDate dateWithTimeIntervalSinceReferenceDate:time];
+//    return dateCreated;
+//}
+
+//-(NSString *)textFromDate:(NSDate *)date {
+//    double dt = [self dateDoubleFromDate:date];
+//    return [self dateFofmattedFromDouble:dt];
+//}
+
+//-(NSString *)dateFofmattedFromDouble:(double)time {
+//    //Example:
+//    //double timeCreated = [[[results objectAtIndex:0] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"notecreated"]] doubleValue];
+//
+//    NSString *dateStrFormat = @"YYYY-MM-dd HH:MM:ss";
+//    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+//    dateFormat.dateFormat = dateStrFormat;
+//    [dateFormat setTimeZone:[NSTimeZone systemTimeZone]];
+//    NSString *currentDateString = [dateFormat stringFromDate:[self dateFromTime:time]];
+//    //NSLog(@"Time NSDateFormatter: %@", [dateFormat stringFromDate:[self dateFromTime:time]]);
+//    return currentDateString;
+//}
 
 
 @end

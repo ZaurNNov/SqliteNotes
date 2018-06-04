@@ -80,13 +80,15 @@
 -(NoteData *)prepareNewNote {
     
     NoteData *note = [[NoteData alloc] init];
-    NSDate *editedDate = [NSDate date];
-    NSDate *createdDate = editedDate;
+    
+    NSDate *createdDate = [NSDate date];
     
     note.noteName = nil;
     note.noteBody = nil;
     note.createdDate = createdDate;
-    note.editedDate = editedDate;
+    if (note.editedDate) {
+        note.editedDate = createdDate;
+    }
     
     return note;
 }
@@ -115,7 +117,6 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
-    ///DBG
     NoteData *note = self.allNotes[indexPath.row];
     NSLog(@"\n%@, %@, %u, %@, %@\n", note.noteName, note.noteBody, note.noteID, note.editedDate, note.createdDate);
     
@@ -138,8 +139,6 @@
 }
 
 -(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-    // Get the record ID
-//    [self prepareNoteForEditing:indexPath];
     self.notedata = [self.allNotes objectAtIndex:indexPath.row];
     self.recordNoteID = self.notedata.noteID;
 
@@ -147,15 +146,10 @@
     [self performSegueWithIdentifier:@"detailNote" sender:self];
 }
 
-//-(NSDate *)dateFromTime:(double)time {
-//    NSDate *dateCreated = [NSDate dateWithTimeIntervalSinceReferenceDate:time];
-//    return dateCreated;
-//}
-
 - (IBAction)eraseAllAction:(UIBarButtonItem *)sender {
     [[DBManager sharedInstance] clearAll];
     
     // load the data
-    [self loadData];
+    [self updateData];
 }
 @end

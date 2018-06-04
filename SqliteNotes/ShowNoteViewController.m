@@ -17,35 +17,31 @@
 @property (weak, nonatomic) IBOutlet UITextView *noteBofyTextView;
 - (IBAction)saveBarButtonAction:(UIBarButtonItem *)sender;
 
-//-(void)loadNote;
+@property (strong, nonatomic) NSDate *createdDate;
 
 @end
 
 @implementation ShowNoteViewController
 
 -(void)loadNote {
-//    DBManager *db = [DBManager sharedInstance];
     [self updateSelfFieldsFromNote:self.noteData];
 }
 
 -(NoteData *)updateNoteFromFields {
     
-    NoteData *note = [[NoteData alloc] init];
-    NSDate *editedDate = [self dateFromText:self.dateLabel.text];
-    NSDate *createdDate = [self dateFromText:self.lastEditdateLabel.text];
-    
-    note.noteName = self.noteNameTextField.text;
-    note.noteBody = self.noteBofyTextView.text;
-    note.createdDate = createdDate;
-    note.editedDate = editedDate;
-    
-    return note;
+        NoteData *newNote = [[NoteData alloc] init];
+        newNote.noteName = self.noteNameTextField.text;
+        newNote.noteBody = self.noteBofyTextView.text;
+        newNote.createdDate = self.createdDate;
+        self.noteData.editedDate = self.createdDate;
+        
+        return newNote;
 }
 
 -(void)updateSelfFieldsFromNote:(NoteData *)note {
     
-    NSString *es = [self dateFofmattedFromDate:note.editedDate];
-    NSString *cs = [self dateFofmattedFromDate:note.createdDate];
+    NSString *es = [self setCustomStringFromDate:note.editedDate];
+    NSString *cs = [self setCustomStringFromDate:note.createdDate];
     
     self.lastEditdateLabel.text = es;
     self.dateLabel.text = cs;
@@ -64,6 +60,8 @@
         self.noteData = [[NoteData alloc] init];
     }
     
+//    self.createdDate = [NSDate date];
+    self.createdDate = self.noteData.createdDate;
     [self updateSelfFieldsFromNote:self.noteData];
 }
 
@@ -72,16 +70,15 @@
     if ([self.noteNameTextField.text isEqualToString: @""] && self.noteNameTextField.text != nil) {
         self.noteNameTextField.text = @"template Notename";
     }
-
-    DBManager *db = [DBManager sharedInstance];
+    
     self.noteData = [self updateNoteFromFields];
     
     if (self.recordNoteID == -1) {
         // save new note
-        [db saveNewNote:self.noteData];
+        [[DBManager sharedInstance] saveNewNote:self.noteData];
     } else {
         // edit old note
-        [db saveOldNote:self.noteData withID:self.recordNoteID];
+        [[DBManager sharedInstance] saveOldNote:self.noteData withID:self.recordNoteID];
     }
     
     // inform delegate controller

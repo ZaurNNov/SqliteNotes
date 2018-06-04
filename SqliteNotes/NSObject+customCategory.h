@@ -10,11 +10,14 @@
 
 @interface NSObject (customCategory)
 
--(NSString *)dateFofmattedFromDouble:(double)time;
--(NSString *)dateFofmattedFromDate:(NSDate *)date;
--(NSDate *)dateFromTime:(double)time;
--(double)dateDoubleFromDate:(NSDate *)date;
--(NSDate *)dateFromText:(NSString *)dateText;
--(NSString *)textFromDate:(NSDate *)date;
+//-(NSString *)dateFofmattedFromDouble:(double)time;
+-(NSString *)setCustomStringFromDate:(NSDate *)date;
+//-(NSDate *)dateFromTime:(double)time;
+//-(double)dateDoubleFromDate:(NSDate *)date;
+-(NSDate *)setCustomDateFromString:(NSString *)dateText;
+//-(NSString *)textFromDate:(NSDate *)date;
+-(double)setCustomDoubleFromDate:(NSDate *)date;
 
+//-(NSDate *)dateFromTime:(double)time
+//-(NSString *)dateFofmattedFromDouble:(double)time
 @end
