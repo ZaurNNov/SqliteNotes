@@ -16,5 +16,4 @@
 @property (nonatomic, strong) NSDate *createdDate;
 @property (nonatomic, strong) NSDate *editedDate;
 
-
 @end

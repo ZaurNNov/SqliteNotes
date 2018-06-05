@@ -105,7 +105,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="alphabet" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="alphabet" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Note body example...." adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4yP-jj-oXD">
                                 <rect key="frame" x="16" y="168" width="288" height="380"/>
@@ -172,6 +172,7 @@
                         <outlet property="lastEditdateLabel" destination="2z0-GP-o7O" id="gA3-sk-dAs"/>
                         <outlet property="noteBofyTextView" destination="4yP-jj-oXD" id="CUn-nR-OCF"/>
                         <outlet property="noteNameTextField" destination="Clj-6K-unv" id="vFi-H1-PHH"/>
+                        <outlet property="saveBarButton" destination="Nps-ZG-8bz" id="eIU-Sx-GVm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YIT-QZ-U8w" userLabel="First Responder" sceneMemberID="firstResponder"/>

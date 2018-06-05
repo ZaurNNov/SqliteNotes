@@ -17,8 +17,8 @@
 
 @interface ShowNoteViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate, ShowNoteViewControllerDelegate>
 
-@property (nonatomic, strong) id<ShowNoteViewControllerDelegate> selfDelegate;
 @property (nonatomic) int recordNoteID;
 @property (nonatomic, strong) NoteData *noteData;
+@property (nonatomic, strong) id<ShowNoteViewControllerDelegate> selfDelegate;
 
 @end
