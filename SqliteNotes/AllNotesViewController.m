@@ -82,13 +82,12 @@
     NoteData *note = [[NoteData alloc] init];
     
     NSDate *createdDate = [NSDate date];
+    NSDate *editedDate = [NSDate date];
     
     note.noteName = nil;
     note.noteBody = nil;
     note.createdDate = createdDate;
-    if (note.editedDate) {
-        note.editedDate = createdDate;
-    }
+    note.editedDate = editedDate;
     
     return note;
 }

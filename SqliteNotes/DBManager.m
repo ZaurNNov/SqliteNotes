@@ -106,8 +106,6 @@
                 double ed = sqlite3_column_double(compiledStatement, 4);
                 note.createdDate = [NSDate dateWithTimeIntervalSinceReferenceDate:cd];
                 note.editedDate = [NSDate dateWithTimeIntervalSinceReferenceDate:ed];
-//                note.createdDate = [NSDate dateWithTimeIntervalSinceNow:cd];
-//                note.editedDate = [NSDate dateWithTimeIntervalSinceNow:ed];
                 
                 [notes addObject:note];
             }
@@ -231,8 +229,6 @@
                 
                 const char *charsName = [note.noteName UTF8String];
                 const char *charsBody = [note.noteBody UTF8String];
-//                double cd = [self dateDoubleFromDate:note.createdDate];
-//                double ed = [self dateDoubleFromDate:note.editedDate];
                 
                 double cdd =[note.createdDate timeIntervalSinceReferenceDate];
                 double edd = [note.editedDate timeIntervalSinceReferenceDate];

@@ -18,6 +18,7 @@
 - (IBAction)saveBarButtonAction:(UIBarButtonItem *)sender;
 
 @property (strong, nonatomic) NSDate *createdDate;
+@property (strong, nonatomic) NSDate *editedDate;
 
 @end
 
@@ -29,13 +30,15 @@
 
 -(NoteData *)updateNoteFromFields {
     
-        NoteData *newNote = [[NoteData alloc] init];
-        newNote.noteName = self.noteNameTextField.text;
-        newNote.noteBody = self.noteBofyTextView.text;
-        newNote.createdDate = self.createdDate;
-        self.noteData.editedDate = self.createdDate;
-        
-        return newNote;
+    NoteData *newNote = [[NoteData alloc] init];
+    newNote.noteName = self.noteNameTextField.text;
+    newNote.noteBody = self.noteBofyTextView.text;
+    newNote.createdDate = self.createdDate;
+    newNote.editedDate = self.editedDate;
+    self.noteData.editedDate = self.editedDate;
+//    self.noteData.createdDate = self.createdDate;
+    
+    return newNote;
 }
 
 -(void)updateSelfFieldsFromNote:(NoteData *)note {
@@ -62,6 +65,7 @@
     
 //    self.createdDate = [NSDate date];
     self.createdDate = self.noteData.createdDate;
+    self.editedDate = self.noteData.editedDate;
     [self updateSelfFieldsFromNote:self.noteData];
 }
 
@@ -72,6 +76,7 @@
     }
     
     self.noteData = [self updateNoteFromFields];
+    self.noteData.editedDate = [NSDate date];
     
     if (self.recordNoteID == -1) {
         // save new note
