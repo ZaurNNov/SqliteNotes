@@ -48,13 +48,13 @@
     [self updateData];
 }
 
-//- (void)viewWillAppear:(BOOL)animated
-//{
-//    [super viewWillAppear:animated];
-//
-//    // load the data
-//    [self updateData];
-//}
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    // load the data
+    [self updateData];
+}
 
 -(void)loadData {
     self.allNotes = [[DBManager sharedInstance] getAllNotedataArray];

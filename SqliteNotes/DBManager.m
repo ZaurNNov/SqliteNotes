@@ -76,7 +76,7 @@
     
     NSMutableArray *notes = [NSMutableArray new];
     
-    NSString *query = @"select noteID, notename, notebody, notecreated, noteedit from notes order by noteedit asc";
+    NSString *query = @"select noteID, notename, notebody, notecreated, noteedit from notes order by noteedit desc";
     
     NSString *databasePath = [self.dd stringByAppendingPathComponent:self.dbFilename];
     

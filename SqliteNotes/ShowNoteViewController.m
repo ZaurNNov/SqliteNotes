@@ -89,7 +89,7 @@
     }
     
     // inform delegate controller
-    [self.selfDelegate updateData];
+    //[self.selfDelegate updateData];
 }
 
 -(BOOL)noteChanged {
@@ -140,7 +140,16 @@
     return YES;
 }
 
+//-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+//
+//}
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    [self autoHideSaveBarButton];
+    return YES;
+}
+
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(nonnull NSString *)text {
     [self autoHideSaveBarButton];
     return YES;
 }
@@ -199,8 +208,11 @@
 
 -(void)backButtonTapped {
     NSLog(@"   ===   AAAAAAAAAAAAAAAAAAAA   ===   ");
+    [self.noteNameTextField resignFirstResponder];
+    [self.noteBofyTextView resignFirstResponder];
     if ([self noteChanged]) {
         [self noteHasChangesAlert];
+        return;
     }
     
     // Pop the view controller.
