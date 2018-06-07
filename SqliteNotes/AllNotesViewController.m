@@ -79,16 +79,7 @@
 
 -(NoteData *)prepareNewNote {
     
-    NoteData *note = [[NoteData alloc] init];
-    
-    NSDate *createdDate = [NSDate date];
-    NSDate *editedDate = [NSDate date];
-    
-    note.noteName = nil;
-    note.noteBody = nil;
-    note.createdDate = createdDate;
-    note.editedDate = editedDate;
-    
+    NoteData *note = [[NoteData alloc] initWithNoteDates];
     return note;
 }
 

@@ -14,7 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastEditdateLabel;
 @property (weak, nonatomic) IBOutlet UITextField *noteNameTextField;
-@property (weak, nonatomic) IBOutlet UITextView *noteBofyTextView;
+@property (weak, nonatomic) IBOutlet UITextView *noteBodyTextView;
 - (IBAction)saveBarButtonAction:(UIBarButtonItem *)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveBarButton;
 
@@ -31,11 +31,16 @@
 
 -(NoteData *)updateNoteFromFields {
     
-    NoteData *newNote = [[NoteData alloc] init];
-    newNote.noteName = self.noteNameTextField.text;
-    newNote.noteBody = self.noteBofyTextView.text;
-    newNote.createdDate = self.createdDate;
-    newNote.editedDate = self.editedDate;
+    NoteData *newNote = [[NoteData alloc] initWithNoteName:self.noteNameTextField.text
+                                              noteBody:self.noteBodyTextView.text
+                                           createdDate:self.createdDate
+                                            editedDate:self.editedDate];
+    
+//    newNote.noteName = self.noteNameTextField.text;
+//    newNote.noteBody = self.noteBodyTextView.text;
+//    newNote.createdDate = self.createdDate;
+//    newNote.editedDate = self.editedDate;
+    
     self.noteData.editedDate = self.editedDate;
     
     return newNote;
@@ -49,7 +54,7 @@
     self.lastEditdateLabel.text = es;
     self.dateLabel.text = cs;
     self.noteNameTextField.text = note.noteName;
-    self.noteBofyTextView.text = note.noteBody;
+    self.noteBodyTextView.text = note.noteBody;
 }
 
 
@@ -57,11 +62,9 @@
     [super viewDidLoad];
     
     self.noteNameTextField.delegate = self;
-    self.noteBofyTextView.delegate = self;
-
-    if (!self.noteData) {
-        self.noteData = [[NoteData alloc] init];
-    }
+    self.noteBodyTextView.delegate = self;
+    
+    //self.noteData = [[NoteData alloc] initWithNoteDataWithoutID];
     
     self.createdDate = self.noteData.createdDate;
     self.editedDate = self.noteData.editedDate;
@@ -77,6 +80,10 @@
         self.noteNameTextField.text = @"template Notename";
     }
     
+    if ([self.noteBodyTextView.text isEqualToString: @""] && self.noteBodyTextView.text != nil) {
+        self.noteBodyTextView.text = @"empty note";
+    }
+    
     self.noteData = [self updateNoteFromFields];
     self.noteData.editedDate = [NSDate date];
     
@@ -89,12 +96,12 @@
     }
     
     // inform delegate controller
-    //[self.selfDelegate updateData];
+    [self.selfDelegate updateData];
 }
 
 -(BOOL)noteChanged {
     
-    BOOL bodyTextChanged = ![self textFrom:self.noteData.noteBody isEqual:self.noteBofyTextView.text];
+    BOOL bodyTextChanged = ![self textFrom:self.noteData.noteBody isEqual:self.noteBodyTextView.text];
     BOOL nameTextChanged = ![self textFrom:self.noteData.noteName isEqual:self.noteNameTextField.text];
     
     if (bodyTextChanged || nameTextChanged) return YES;
@@ -139,10 +146,6 @@
     [textView resignFirstResponder];
     return YES;
 }
-
-//-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-//
-//}
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     [self autoHideSaveBarButton];
@@ -207,9 +210,9 @@
 }
 
 -(void)backButtonTapped {
-    NSLog(@"   ===   AAAAAAAAAAAAAAAAAAAA   ===   ");
+    NSLog(@"   ===   backButtonTapped   ===   ");
     [self.noteNameTextField resignFirstResponder];
-    [self.noteBofyTextView resignFirstResponder];
+    [self.noteBodyTextView resignFirstResponder];
     if ([self noteChanged]) {
         [self noteHasChangesAlert];
         return;

@@ -16,4 +16,11 @@
 @property (nonatomic, strong) NSDate *createdDate;
 @property (nonatomic, strong) NSDate *editedDate;
 
+-(instancetype)initWithNoteName:(NSString *)noteName
+                     noteBody:(NSString *)noteBody
+                  createdDate:(NSDate *)createdDate
+                   editedDate:(NSDate *)editedDate;
+
+-(instancetype)initWithNoteDates;
+
 @end

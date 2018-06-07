@@ -107,9 +107,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="alphabet" enablesReturnKeyAutomatically="YES"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Note body example...." adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4yP-jj-oXD">
-                                <rect key="frame" x="16" y="168" width="288" height="380"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Note body example..." adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4yP-jj-oXD">
+                                <rect key="frame" x="16" y="168" width="288" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="s44-8O-moD"/>
+                                </constraints>
                                 <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="alphabet" enablesReturnKeyAutomatically="YES"/>
@@ -140,15 +143,14 @@
                         <color key="backgroundColor" red="0.86274509803921573" green="0.90148185355277777" blue="0.942138671875" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Q7F-JF-arp" firstAttribute="trailing" secondItem="2z0-GP-o7O" secondAttribute="trailing" id="08y-pE-aHT"/>
-                            <constraint firstItem="4yP-jj-oXD" firstAttribute="top" secondItem="Clj-6K-unv" secondAttribute="bottom" constant="8" id="2nN-Vz-eh2"/>
                             <constraint firstItem="9Uc-23-aT4" firstAttribute="leading" secondItem="xFk-wx-5ov" secondAttribute="leading" constant="16" id="2s1-XQ-4so"/>
                             <constraint firstItem="xFk-wx-5ov" firstAttribute="trailing" secondItem="4yP-jj-oXD" secondAttribute="trailing" constant="16" id="3Ne-gf-1wI"/>
                             <constraint firstItem="9Uc-23-aT4" firstAttribute="top" secondItem="xFk-wx-5ov" secondAttribute="top" constant="8" id="3uW-kf-e4I"/>
                             <constraint firstItem="Q7F-JF-arp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9Uc-23-aT4" secondAttribute="trailing" constant="8" id="6Wy-as-fwB"/>
                             <constraint firstItem="N2z-zb-mF2" firstAttribute="top" secondItem="9Uc-23-aT4" secondAttribute="bottom" constant="8" id="6t4-nw-gwX"/>
+                            <constraint firstItem="4yP-jj-oXD" firstAttribute="top" secondItem="Clj-6K-unv" secondAttribute="bottom" constant="8" id="Bn7-ac-qps"/>
                             <constraint firstItem="2z0-GP-o7O" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="N2z-zb-mF2" secondAttribute="trailing" constant="8" id="M6S-Me-WbT"/>
                             <constraint firstItem="4yP-jj-oXD" firstAttribute="leading" secondItem="xFk-wx-5ov" secondAttribute="leading" constant="16" id="MWA-nD-iO1"/>
-                            <constraint firstItem="xFk-wx-5ov" firstAttribute="bottom" secondItem="4yP-jj-oXD" secondAttribute="bottom" constant="20" id="PpA-UG-OHe"/>
                             <constraint firstItem="N2z-zb-mF2" firstAttribute="leading" secondItem="xFk-wx-5ov" secondAttribute="leading" constant="16" id="Vc9-LI-jFR"/>
                             <constraint firstItem="Q7F-JF-arp" firstAttribute="leading" secondItem="2z0-GP-o7O" secondAttribute="leading" id="Z6f-TL-jAu"/>
                             <constraint firstItem="2z0-GP-o7O" firstAttribute="top" secondItem="Q7F-JF-arp" secondAttribute="bottom" constant="8" id="dOE-xh-KC4"/>
@@ -170,7 +172,7 @@
                     <connections>
                         <outlet property="dateLabel" destination="Q7F-JF-arp" id="t11-rl-eZX"/>
                         <outlet property="lastEditdateLabel" destination="2z0-GP-o7O" id="gA3-sk-dAs"/>
-                        <outlet property="noteBofyTextView" destination="4yP-jj-oXD" id="CUn-nR-OCF"/>
+                        <outlet property="noteBodyTextView" destination="4yP-jj-oXD" id="VQI-FF-iyU"/>
                         <outlet property="noteNameTextField" destination="Clj-6K-unv" id="vFi-H1-PHH"/>
                         <outlet property="saveBarButton" destination="Nps-ZG-8bz" id="eIU-Sx-GVm"/>
                     </connections>
